@@ -25,7 +25,7 @@ Curated notes describing what designers need to measure but cannot do well with 
 These come straight from the structure of the Atlas. Each is either a **real gap** worth writing up, or simply **missing content** — both are good contributions.
 
 ### Metrics that no tool measures
-- *none*
+- [[EUI - Energy Use Intensity]] — methods: —
 
 ### Methods without a supporting tool
 - [[Heuristic evaluation]] — produces: —

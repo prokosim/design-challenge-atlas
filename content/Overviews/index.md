@@ -8,7 +8,7 @@ generated: true
 > Views computed from the properties of every note in the Atlas.
 > This page is rebuilt automatically from note properties — do not edit it by hand. Change the underlying notes instead.
 
-**Atlas at a glance:** 9 challenges · 15 metrics · 14 standards · 15 methods · 14 tools · 5 tool gaps · 24 sources · 2 case studies
+**Atlas at a glance:** 9 challenges · 16 metrics · 14 standards · 15 methods · 16 tools · 5 tool gaps · 24 sources · 2 case studies
 
 | Page | Answers the question |
 | --- | --- |

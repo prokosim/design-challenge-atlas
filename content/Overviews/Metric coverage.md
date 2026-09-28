@@ -8,7 +8,7 @@ generated: true
 > Which metrics can be measured with a digital tool today, and how well.
 > This page is rebuilt automatically from note properties — do not edit it by hand. Change the underlying notes instead.
 
-**15 metrics** — 🟢 covered: 7 · 🟠 known gap: 8 · 🔴 no tool: 0
+**16 metrics** — 🟢 covered: 7 · 🟠 known gap: 8 · 🔴 no tool: 1
 
 - 🟢 **covered** — at least one tool in the Atlas can measure it, no gap recorded
 - 🟠 **known gap** — tools exist, but a [[Gap register|Tool Gap]] explains why they are not good enough
@@ -19,6 +19,7 @@ generated: true
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | [[Daily vibration exposure A(8)]] | vibration | m/s² | [[Hand-arm vibration measurement]] | 1 | 🟢 covered | proposed | — |
 | [[Error recovery time]] | time | s | [[Video-based behaviour coding]], [[Usability testing]] | 1 | 🟠 known gap | proposed | [[Automated use-error detection and classification]] |
+| [[EUI - Energy Use Intensity]] | energy usage | kWh/m^2 | — | 0 | 🔴 no tool | — | — |
 | [[Grip force]] | force | N | [[Grip pressure mapping]] | 1 | 🟠 known gap | proposed | [[Grip force measurement on real tool handles in the field]] |
 | [[NASA-TLX score]] | workload | score 0–100 | [[Workload questionnaire]] | 2 | 🟠 known gap | proposed | [[Real-time cognitive workload measurement in the field]] |
 | [[Reach distance]] | reach-space | mm | [[Digital human simulation]] | 2 | 🟢 covered | proposed | — |

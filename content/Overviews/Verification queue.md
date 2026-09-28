@@ -8,7 +8,7 @@ generated: true
 > What needs reviewing or re-verifying — the maintainers' to-do list.
 > This page is rebuilt automatically from note properties — do not edit it by hand. Change the underlying notes instead.
 
-✅ verified: 0 · ☑️ reviewed: 0 · 📝 proposed: 98 · ⛔ deprecated: 0
+✅ verified: 0 · ☑️ reviewed: 0 · 📝 proposed: 101 · ⛔ deprecated: 0
 
 See [[Trust levels]] for what each status and evidence level means.
 
@@ -33,6 +33,7 @@ See [[Trust levels]] for what each status and evidence level means.
 | [[EN 894-3]] | standard | B | core | 2026-09-28 | — |
 | [[Error recovery time]] | metric | D | core | 2026-09-28 | — |
 | [[EU Directive 2002-44-EC]] | standard | A | core | 2026-09-28 | — |
+| [[EUI - Energy Use Intensity]] | metric | A | core | 2026-09-28 | Šimon Prokop |
 | [[Excessive cognitive workload]] | challenge | B | core | 2026-09-28 | — |
 | [[Excessive hand force]] | challenge | B | core | 2026-09-28 | — |
 | [[Eye-tracking study]] | method | B | core | 2026-09-28 | — |
@@ -50,6 +51,7 @@ See [[Trust levels]] for what each status and evidence level means.
 | [[Heuristic evaluation]] | method | B | core | 2026-09-28 | — |
 | [[Hierarchical task analysis]] | method | B | core | 2026-09-28 | — |
 | [[Holmqvist et al 2011]] | source | A | core | 2026-09-28 | — |
+| [[Honeybee]] | tool | C | core | 2026-09-28 | — |
 | [[IEC 60204-1]] | standard | A | core | 2026-09-28 | — |
 | [[IEC 62366-1]] | standard | A | core | 2026-09-28 | — |
 | [[Inertial motion capture]] | method | C | core | 2026-09-28 | — |
@@ -64,6 +66,7 @@ See [[Trust levels]] for what each status and evidence level means.
 | [[ISO 9241-11]] | standard | A | core | 2026-09-28 | — |
 | [[ISO 9355-3]] | standard | A | core | 2026-09-28 | — |
 | [[Kong and Lowe 2005]] | source | A | core | 2026-09-28 | — |
+| [[Ladybug]] | tool | C | core | 2026-09-28 | — |
 | [[Lewis and Sauro 2018]] | source | A | core | 2026-09-28 | — |
 | [[LimeSurvey]] | tool | B | core | 2026-09-28 | — |
 | [[Low operator trust in automation]] | challenge | D | core | 2026-09-28 | — |
