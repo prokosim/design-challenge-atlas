@@ -1,11 +1,10 @@
 ---
 type: tool
 id: TOOL-016
-title: LadyBug
+title: Ladybug
 vendor: ""
 url: https://www.ladybug.tools/ladybug.html
 tool_type:
-  - environmental analysis
   - analysis-software
 commercial_status: commercial
 cost_level: free

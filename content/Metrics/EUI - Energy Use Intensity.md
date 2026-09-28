@@ -3,9 +3,9 @@ type: metric
 id: MET-017
 title: EUI - Energy Use Intensity
 domain:
-  - energy
+  - sustainability
 metric_kind: quantitative
-quantity: energy usage
+quantity: other
 unit: kWh/m^2
 status: proposed
 evidence_level: A

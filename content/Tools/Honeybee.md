@@ -1,11 +1,10 @@
 ---
 type: tool
 id: TOOL-017
-title: HoneyBee
+title: Honeybee
 vendor: info@ladybug.tools
 url: https://www.ladybug.tools/honeybee.html
 tool_type:
-  - environmental analysis
   - analysis-software
 commercial_status: commercial
 cost_level: free
