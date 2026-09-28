@@ -1,0 +1,34 @@
+@use "./base.scss";
+
+// Design Challenge Atlas — small visual tweaks on top of Quartz defaults.
+
+// Wide overview tables: allow horizontal scroll instead of squashing.
+.table-container {
+  overflow-x: auto;
+  & > table {
+    font-size: 0.92rem;
+    th {
+      white-space: nowrap;
+    }
+    td,
+    th {
+      padding: 0.35rem 0.6rem;
+      vertical-align: top;
+    }
+  }
+}
+
+// Property table directly under the trust badge: compact, two columns.
+article > .callout + .table-container > table {
+  font-size: 0.9rem;
+  td:first-child {
+    color: var(--gray);
+    white-space: nowrap;
+  }
+}
+
+// Tag chips: make status/evidence tags readable at a glance.
+.tags a.tag-link[href*="status/verified"] { background: rgba(46, 160, 67, 0.15); }
+.tags a.tag-link[href*="status/reviewed"] { background: rgba(31, 95, 139, 0.15); }
+.tags a.tag-link[href*="status/proposed"] { background: rgba(212, 160, 23, 0.18); }
+.tags a.tag-link[href*="status/deprecated"] { background: rgba(200, 60, 60, 0.15); }

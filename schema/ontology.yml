@@ -1,0 +1,258 @@
+# ──────────────────────────────────────────────────────────────────────────────
+# Design Challenge Atlas — ontology definition (single source of truth)
+#
+# This file defines every entity type, its properties and its relations.
+# The validator, the site build, the generated overview pages and the
+# GitHub issue → note converter all read this file.
+#
+# To add a new allowed value (e.g. a new domain), add it here and nowhere else.
+# ──────────────────────────────────────────────────────────────────────────────
+
+version: "0.1"
+
+# Fields every note must / may have ---------------------------------------------
+common:
+  required: [type, id, title, status, evidence_level, origin]
+  fields:
+    type:
+      enum: [challenge, metric, standard, method, tool, gap, source, case-study]
+    id:
+      description: "Stable identifier, prefix + 3 digits (e.g. MET-004). Never reuse an id."
+    title:
+      description: "Human-readable name. Must equal the file name (without .md)."
+    aliases:
+      list: true
+    domain:
+      list: true
+      enum:
+        - usability
+        - cognitive-ergonomics
+        - physical-ergonomics
+        - safety
+        - accessibility
+        - logistics
+        - manufacturing
+        - sustainability
+    status:
+      enum: [proposed, reviewed, verified, deprecated]
+      description: >
+        proposed = submitted, not yet checked by a maintainer ·
+        reviewed = a maintainer checked structure and plausibility ·
+        verified = checked against the cited sources, fit to rely on ·
+        deprecated = kept for history, do not use
+    evidence_level:
+      enum: [A, B, C, D]
+      description: >
+        A = primary source (standard catalogue, peer-reviewed paper, official vendor spec) ·
+        B = credible secondary source (review, textbook, expert practice guide) ·
+        C = partially sourced (expert knowledge or a contribution without full references) ·
+        D = hypothesis / unverified claim
+    origin:
+      enum: [core, community]
+      description: "core = written by the Atlas team · community = came in through a GitHub contribution"
+    last_verified:
+      description: "Date (YYYY-MM-DD) the note was last checked against its sources."
+    verified_by:
+      description: "Name or GitHub handle of the person who last verified the note."
+    tags:
+      list: true
+  relations:
+    sources:
+      target: source
+      label: "Sources"
+      inverse: "Cited by"
+
+# Entity types --------------------------------------------------------------------
+types:
+
+  challenge:
+    folder: Challenges
+    id_prefix: CH
+    label: Design Challenge
+    plural: Design Challenges
+    description: "A problem a designer is trying to solve or avoid (e.g. 'user error during critical interaction')."
+    body_sections: [Problem, Design questions, Why it matters]
+    fields: {}
+    relations:
+      metrics:
+        target: metric
+        label: "What to measure"
+        inverse: "Challenges that need this metric"
+      related_challenges:
+        target: challenge
+        label: "Related challenges"
+        inverse: "Related challenges"
+
+  metric:
+    folder: Metrics
+    id_prefix: MET
+    label: Metric
+    plural: Metrics
+    description: "A measurable characteristic that answers a design question (KPI, measure, threshold or derived indicator)."
+    body_sections: [Definition, Calculation, Targets and thresholds, Validity and limits]
+    fields:
+      metric_kind:
+        enum: [kpi, quantitative, qualitative, threshold, derived]
+      quantity:
+        description: "What kind of thing is measured — drives the 'What do you want to measure?' step of the Finder."
+        enum: [time, errors, success, force, posture-motion, vibration, reach-space, workload, attention, satisfaction, other]
+      unit:
+        description: "Unit of measurement, e.g. 's', '%', 'N', 'm/s²', 'score 0–100'."
+    required: [metric_kind, quantity, unit]
+    relations:
+      methods:
+        target: method
+        label: "How to measure it"
+        inverse: "Metrics this method produces"
+      standards:
+        target: standard
+        label: "Standards and references"
+        inverse: "Metrics defined or required here"
+
+  standard:
+    folder: Standards
+    id_prefix: STD
+    label: Standard
+    plural: Standards
+    description: "A standard, regulation or guideline that defines, requires or limits something. Referenced and paraphrased — never copied."
+    body_sections: [Scope (paraphrased), What it gives the designer, Notes]
+    fields:
+      code:
+        description: "Official designation incl. edition, e.g. 'ISO 9241-11:2018'."
+      publisher:
+        enum: [ISO, IEC, ISO/IEC, CEN, CENELEC, EU, ANSI, ASTM, NASA, other]
+      standard_kind:
+        enum: [standard, regulation, guideline]
+      provides:
+        list: true
+        enum: [definitions, process-requirements, design-requirements, test-method, numeric-limits, reporting-format]
+      standard_status:
+        enum: [current, under-revision, withdrawn, superseded]
+      url: {}
+    required: [code, publisher, standard_kind, standard_status]
+    relations:
+      supersedes:
+        target: standard
+        label: "Supersedes"
+        inverse: "Superseded by"
+
+  method:
+    folder: Methods
+    id_prefix: MTH
+    label: Method
+    plural: Methods
+    description: "A way of measuring or evaluating (e.g. usability testing, digital human simulation)."
+    body_sections: [What it is, How it works, Strengths, Limitations]
+    fields:
+      method_kind:
+        enum: [empirical-test, analytical, simulation, questionnaire, observation, instrumented-measurement]
+    required: [method_kind]
+    relations: {}
+
+  tool:
+    folder: Tools
+    id_prefix: TOOL
+    label: Digital Tool
+    plural: Digital Tools
+    description: "A concrete software, hardware or platform product that supports a method and can measure metrics."
+    body_sections: [What it does, Limitations]
+    fields:
+      vendor: {}
+      url: {}
+      tool_type:
+        list: true
+        enum: [measurement-hardware, analysis-software, simulation, testing-platform, survey-platform, cad, ai, visualization]
+      commercial_status:
+        enum: [commercial, open-source, free, academic, discontinued]
+      cost_level:
+        description: "Indicative list price (USD): $ < 1 000 · $$ 1 000–10 000 · $$$ > 10 000 · quote-based = no public price. Leave empty if unknown."
+        enum: [free, "$", "$$", "$$$", quote-based]
+      automation_level:
+        enum: [manual, semi-automatic, automatic]
+      hardware_required:
+        boolean: true
+      setting:
+        list: true
+        enum: [lab, field, desktop, remote]
+      inputs:
+        list: true
+      outputs:
+        list: true
+    required: [tool_type, commercial_status]
+    relations:
+      measures:
+        target: metric
+        label: "Metrics it can measure"
+        inverse: "Tools that can measure it"
+      supports_methods:
+        target: method
+        label: "Methods it supports"
+        inverse: "Tools for this method"
+
+  gap:
+    folder: Gaps
+    id_prefix: GAP
+    label: Tool Gap
+    plural: Tool Gaps
+    description: "Something designers need to know or measure for which no adequate digital tool exists."
+    body_sections: [What should be measured, Decision it would support, Current practice, Why current tools are insufficient, What an ideal tool would do, Evidence]
+    fields:
+      gap_type:
+        list: true
+        enum: [missing_tool, poor_tool, expensive_tool, fragmented_workflow, manual_process, missing_integration, missing_metric]
+      impact:
+        enum: [low, medium, high]
+      opportunity:
+        list: true
+        enum: [research, software, hardware, ai, automation, new-method]
+    required: [gap_type, impact]
+    relations:
+      challenges:
+        target: challenge
+        label: "Challenges affected"
+        inverse: "Known tool gaps"
+      metrics:
+        target: metric
+        label: "Metrics affected"
+        inverse: "Known tool gaps"
+      methods:
+        target: method
+        label: "Methods affected"
+        inverse: "Known tool gaps"
+      tools_considered:
+        target: tool
+        label: "Tools considered and found insufficient"
+        inverse: "Found insufficient for"
+
+  source:
+    folder: Sources
+    id_prefix: SRC
+    label: Source
+    plural: Sources
+    description: "A citable reference that backs a claim: paper, book, standard catalogue page, vendor documentation."
+    body_sections: [What it supports]
+    fields:
+      source_kind:
+        enum: [paper, book, standard-catalogue, regulation, vendor-doc, web, dataset]
+      authors: {}
+      year: {}
+      url: {}
+      doi: {}
+    required: [source_kind]
+    relations: {}
+
+  case-study:
+    folder: Case studies
+    id_prefix: CASE
+    label: Case Study
+    plural: Case Studies
+    description: "A worked example that walks the full chain from design challenge to decision."
+    body_sections: [Scenario, Walk-through, What we learned]
+    fields: {}
+    relations:
+      challenges: {target: challenge, label: "Challenges", inverse: "Used in case studies"}
+      metrics: {target: metric, label: "Metrics", inverse: "Used in case studies"}
+      standards: {target: standard, label: "Standards", inverse: "Used in case studies"}
+      methods: {target: method, label: "Methods", inverse: "Used in case studies"}
+      tools: {target: tool, label: "Tools", inverse: "Used in case studies"}
+      gaps: {target: gap, label: "Tool gaps", inverse: "Used in case studies"}

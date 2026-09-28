@@ -1,0 +1,154 @@
+name: 📘 Add a standard
+description: Propose a standard, regulation or guideline (paraphrased only).
+title: '[Standard] '
+labels:
+- contribution
+- type:standard
+body:
+- type: markdown
+  attributes:
+    value: '> [!WARNING]
+
+      > **Never paste text from a standard.** Describe its scope in your own words and link the official catalogue page.
+
+
+      A maintainer reviews your submission. When it is labelled **accepted**, a bot turns it into an Atlas note (status *proposed*) and opens a pull request. Thank you!'
+- type: input
+  id: name
+  attributes:
+    label: Short name
+    description: Usually the designation without the year.
+    placeholder: e.g. ISO 9241-210
+  validations:
+    required: true
+- type: input
+  id: code
+  attributes:
+    label: Full designation incl. edition
+    placeholder: e.g. ISO 9241-210:2019
+  validations:
+    required: true
+- type: dropdown
+  id: publisher
+  attributes:
+    label: Publisher
+    options:
+    - ISO
+    - IEC
+    - ISO/IEC
+    - CEN
+    - CENELEC
+    - EU
+    - ANSI
+    - ASTM
+    - NASA
+    - other
+    multiple: false
+  validations:
+    required: true
+- type: dropdown
+  id: standard_kind
+  attributes:
+    label: Kind
+    options:
+    - standard
+    - regulation
+    - guideline
+    multiple: false
+  validations:
+    required: true
+- type: dropdown
+  id: provides
+  attributes:
+    label: What does it provide?
+    options:
+    - definitions
+    - process-requirements
+    - design-requirements
+    - test-method
+    - numeric-limits
+    - reporting-format
+    multiple: true
+  validations:
+    required: false
+- type: dropdown
+  id: standard_status
+  attributes:
+    label: Status
+    options:
+    - current
+    - under-revision
+    - withdrawn
+    - superseded
+    multiple: false
+  validations:
+    required: true
+- type: input
+  id: url
+  attributes:
+    label: Official catalogue URL
+  validations:
+    required: true
+- type: dropdown
+  id: domain
+  attributes:
+    label: Domain
+    options:
+    - usability
+    - cognitive-ergonomics
+    - physical-ergonomics
+    - safety
+    - accessibility
+    - logistics
+    - manufacturing
+    - sustainability
+    multiple: true
+  validations:
+    required: true
+- type: textarea
+  id: s_scope
+  attributes:
+    label: Scope (paraphrased)
+    description: In your own words.
+  validations:
+    required: true
+- type: textarea
+  id: s_gives
+  attributes:
+    label: What it gives the designer
+    description: Definitions, requirements, test methods, limits — and which metrics follow.
+  validations:
+    required: false
+- type: dropdown
+  id: evidence_level
+  attributes:
+    label: What kind of evidence supports this?
+    options:
+    - A — primary source (standard catalogue, peer-reviewed paper, official vendor spec)
+    - B — credible secondary source (review, textbook, expert guide)
+    - C — partial sourcing / own professional experience
+    - D — hypothesis, not yet backed by sources
+    multiple: false
+  validations:
+    required: true
+- type: textarea
+  id: s_sources
+  attributes:
+    label: Evidence and sources
+    description: Links, DOIs or references backing the claims above.
+    placeholder: 'https://…
+
+      doi:…'
+  validations:
+    required: true
+- type: checkboxes
+  id: confirm
+  attributes:
+    label: Before you submit
+    options:
+    - label: I have searched the Atlas and this is not already there.
+      required: true
+    - label: I have not copied text from standards or other copyrighted sources.
+      required: true
+    - label: I agree that my contribution is published in the Atlas under the project's content licence.
+      required: true

@@ -1,0 +1,8 @@
+{
+  "title": "Design Challenge Atlas",
+  "description": "An open map from design challenges to metrics, standards, methods and digital tools — and the gaps where no good tool exists.",
+  "repoUrl": "https://github.com/OWNER/design-challenge-atlas",
+  "baseUrl": "OWNER.github.io/design-challenge-atlas",
+  "quartzVersion": "v4.5.2",
+  "verificationMaxAgeMonths": 12
+}

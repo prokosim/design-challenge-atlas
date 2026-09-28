@@ -1,0 +1,8 @@
+node_modules/
+.quartz/
+.build/
+public/
+content/.obsidian/workspace*.json
+content/.obsidian/cache
+content/.trash/
+.DS_Store

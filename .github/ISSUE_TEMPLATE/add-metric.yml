@@ -1,0 +1,150 @@
+name: 📏 Add a metric
+description: Propose a KPI, measure, threshold or derived indicator.
+title: '[Metric] '
+labels:
+- contribution
+- type:metric
+body:
+- type: markdown
+  attributes:
+    value: 'A **metric** is a measurable characteristic that answers a design question.
+
+
+      A maintainer reviews your submission. When it is labelled **accepted**, a bot turns it into an Atlas note (status *proposed*) and opens a pull request. Thank you!'
+- type: input
+  id: name
+  attributes:
+    label: Metric name
+    placeholder: e.g. Peak push force
+  validations:
+    required: true
+- type: dropdown
+  id: domain
+  attributes:
+    label: Domain
+    options:
+    - usability
+    - cognitive-ergonomics
+    - physical-ergonomics
+    - safety
+    - accessibility
+    - logistics
+    - manufacturing
+    - sustainability
+    multiple: true
+  validations:
+    required: true
+- type: dropdown
+  id: metric_kind
+  attributes:
+    label: Kind of metric
+    options:
+    - kpi
+    - quantitative
+    - qualitative
+    - threshold
+    - derived
+    multiple: false
+  validations:
+    required: true
+- type: dropdown
+  id: quantity
+  attributes:
+    label: What kind of quantity?
+    options:
+    - time
+    - errors
+    - success
+    - force
+    - posture-motion
+    - vibration
+    - reach-space
+    - workload
+    - attention
+    - satisfaction
+    - other
+    multiple: false
+  validations:
+    required: true
+- type: input
+  id: unit
+  attributes:
+    label: Unit
+    placeholder: e.g. N, s, %, score 0–100
+  validations:
+    required: true
+- type: textarea
+  id: s_definition
+  attributes:
+    label: Definition
+    description: What is measured, in plain words.
+  validations:
+    required: true
+- type: textarea
+  id: s_calculation
+  attributes:
+    label: Calculation
+    description: Formula or scoring procedure.
+  validations:
+    required: false
+- type: textarea
+  id: s_targets
+  attributes:
+    label: Targets and thresholds
+    description: Typical targets or limits — with source and context.
+  validations:
+    required: false
+- type: textarea
+  id: s_validity
+  attributes:
+    label: Validity and limits
+    description: When is the metric misleading?
+  validations:
+    required: false
+- type: textarea
+  id: methods
+  attributes:
+    label: How can it be measured?
+    description: One page name per line. Use names of existing Atlas pages where possible — unknown names are kept for the maintainer to match.
+  validations:
+    required: false
+- type: textarea
+  id: standards
+  attributes:
+    label: Related standards
+    description: One page name per line. Use names of existing Atlas pages where possible — unknown names are kept for the maintainer to match.
+  validations:
+    required: false
+- type: dropdown
+  id: evidence_level
+  attributes:
+    label: What kind of evidence supports this?
+    options:
+    - A — primary source (standard catalogue, peer-reviewed paper, official vendor spec)
+    - B — credible secondary source (review, textbook, expert guide)
+    - C — partial sourcing / own professional experience
+    - D — hypothesis, not yet backed by sources
+    multiple: false
+  validations:
+    required: true
+- type: textarea
+  id: s_sources
+  attributes:
+    label: Evidence and sources
+    description: Links, DOIs or references backing the claims above.
+    placeholder: 'https://…
+
+      doi:…'
+  validations:
+    required: true
+- type: checkboxes
+  id: confirm
+  attributes:
+    label: Before you submit
+    options:
+    - label: I have searched the Atlas and this is not already there.
+      required: true
+    - label: I have not copied text from standards or other copyrighted sources.
+      required: true
+    - label: I agree that my contribution is published in the Atlas under the project's content licence.
+      required: true

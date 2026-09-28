@@ -1,0 +1,204 @@
+name: 🛠️ Add a digital tool
+description: Propose software, hardware or a platform that measures something.
+title: '[Tool] '
+labels:
+- contribution
+- type:tool
+body:
+- type: markdown
+  attributes:
+    value: 'A **digital tool** is a concrete product. Please describe limitations as clearly as capabilities — no marketing.
+
+
+      A maintainer reviews your submission. When it is labelled **accepted**, a bot turns it into an Atlas note (status *proposed*) and opens a pull request. Thank you!'
+- type: input
+  id: name
+  attributes:
+    label: Tool name
+    description: Current official product name.
+  validations:
+    required: true
+- type: input
+  id: vendor
+  attributes:
+    label: Developer / vendor
+  validations:
+    required: true
+- type: input
+  id: url
+  attributes:
+    label: Official website
+  validations:
+    required: true
+- type: dropdown
+  id: tool_type
+  attributes:
+    label: Type of tool
+    options:
+    - measurement-hardware
+    - analysis-software
+    - simulation
+    - testing-platform
+    - survey-platform
+    - cad
+    - ai
+    - visualization
+    multiple: true
+  validations:
+    required: true
+- type: dropdown
+  id: commercial_status
+  attributes:
+    label: Availability
+    options:
+    - commercial
+    - open-source
+    - free
+    - academic
+    - discontinued
+    multiple: false
+  validations:
+    required: true
+- type: dropdown
+  id: cost_level
+  attributes:
+    label: Price level
+    options:
+    - free
+    - $
+    - $$
+    - $$$
+    - quote-based
+    multiple: false
+    description: $ < 1 000 USD · $$ 1 000–10 000 · $$$ > 10 000 · quote-based = no public price
+  validations:
+    required: false
+- type: dropdown
+  id: automation_level
+  attributes:
+    label: Automation
+    options:
+    - manual
+    - semi-automatic
+    - automatic
+    multiple: false
+  validations:
+    required: false
+- type: dropdown
+  id: hardware_required
+  attributes:
+    label: Hardware required?
+    options:
+    - 'yes'
+    - 'no'
+    multiple: false
+  validations:
+    required: false
+- type: dropdown
+  id: setting
+  attributes:
+    label: Where is it used?
+    options:
+    - lab
+    - field
+    - desktop
+    - remote
+    multiple: true
+  validations:
+    required: false
+- type: dropdown
+  id: domain
+  attributes:
+    label: Domain
+    options:
+    - usability
+    - cognitive-ergonomics
+    - physical-ergonomics
+    - safety
+    - accessibility
+    - logistics
+    - manufacturing
+    - sustainability
+    multiple: true
+  validations:
+    required: true
+- type: textarea
+  id: inputs
+  attributes:
+    label: Inputs
+    description: What goes in? One per line.
+    placeholder: 'video
+
+      sensor data'
+  validations:
+    required: false
+- type: textarea
+  id: outputs
+  attributes:
+    label: Outputs
+    description: What comes out? One per line.
+    placeholder: 'joint angles
+
+      RULA score'
+  validations:
+    required: false
+- type: textarea
+  id: s_what
+  attributes:
+    label: What it does
+    description: What it measures or produces, in concrete quantities.
+  validations:
+    required: true
+- type: textarea
+  id: measures
+  attributes:
+    label: Which metrics can it measure?
+    description: One page name per line. Use names of existing Atlas pages where possible — unknown names are kept for the maintainer to match.
+  validations:
+    required: true
+- type: textarea
+  id: supports_methods
+  attributes:
+    label: Which methods does it support?
+    description: One page name per line. Use names of existing Atlas pages where possible — unknown names are kept for the maintainer to match.
+  validations:
+    required: false
+- type: textarea
+  id: s_limitations
+  attributes:
+    label: Known limitations
+  validations:
+    required: true
+- type: dropdown
+  id: evidence_level
+  attributes:
+    label: What kind of evidence supports this?
+    options:
+    - A — primary source (standard catalogue, peer-reviewed paper, official vendor spec)
+    - B — credible secondary source (review, textbook, expert guide)
+    - C — partial sourcing / own professional experience
+    - D — hypothesis, not yet backed by sources
+    multiple: false
+  validations:
+    required: true
+- type: textarea
+  id: s_sources
+  attributes:
+    label: Evidence and sources
+    description: Links, DOIs or references backing the claims above.
+    placeholder: 'https://…
+
+      doi:…'
+  validations:
+    required: true
+- type: checkboxes
+  id: confirm
+  attributes:
+    label: Before you submit
+    options:
+    - label: I have searched the Atlas and this is not already there.
+      required: true
+    - label: I have not copied text from standards or other copyrighted sources.
+      required: true
+    - label: I agree that my contribution is published in the Atlas under the project's content licence.
+      required: true

@@ -1,0 +1,129 @@
+name: 📚 Add a case study
+description: Share a worked example from design challenge to decision.
+title: '[Case study] '
+labels:
+- contribution
+- type:case-study
+body:
+- type: markdown
+  attributes:
+    value: 'A **case study** walks the full chain: challenge → questions → metrics → standards → methods → tools → gaps → decision.
+
+
+      A maintainer reviews your submission. When it is labelled **accepted**, a bot turns it into an Atlas note (status *proposed*) and opens a pull request. Thank you!'
+- type: input
+  id: name
+  attributes:
+    label: Case study name
+  validations:
+    required: true
+- type: dropdown
+  id: domain
+  attributes:
+    label: Domain
+    options:
+    - usability
+    - cognitive-ergonomics
+    - physical-ergonomics
+    - safety
+    - accessibility
+    - logistics
+    - manufacturing
+    - sustainability
+    multiple: true
+  validations:
+    required: true
+- type: textarea
+  id: s_scenario
+  attributes:
+    label: Scenario
+  validations:
+    required: true
+- type: textarea
+  id: s_walkthrough
+  attributes:
+    label: Walk-through
+    description: Follow the chain step by step.
+  validations:
+    required: true
+- type: textarea
+  id: s_learned
+  attributes:
+    label: What we learned
+  validations:
+    required: false
+- type: textarea
+  id: challenges
+  attributes:
+    label: Challenges
+    description: One page name per line. Use names of existing Atlas pages where possible — unknown names are kept for the maintainer to match.
+  validations:
+    required: false
+- type: textarea
+  id: metrics
+  attributes:
+    label: Metrics
+    description: One page name per line. Use names of existing Atlas pages where possible — unknown names are kept for the maintainer to match.
+  validations:
+    required: false
+- type: textarea
+  id: standards
+  attributes:
+    label: Standards
+    description: One page name per line. Use names of existing Atlas pages where possible — unknown names are kept for the maintainer to match.
+  validations:
+    required: false
+- type: textarea
+  id: methods
+  attributes:
+    label: Methods
+    description: One page name per line. Use names of existing Atlas pages where possible — unknown names are kept for the maintainer to match.
+  validations:
+    required: false
+- type: textarea
+  id: tools
+  attributes:
+    label: Tools
+    description: One page name per line. Use names of existing Atlas pages where possible — unknown names are kept for the maintainer to match.
+  validations:
+    required: false
+- type: textarea
+  id: gaps
+  attributes:
+    label: Tool gaps
+    description: One page name per line. Use names of existing Atlas pages where possible — unknown names are kept for the maintainer to match.
+  validations:
+    required: false
+- type: dropdown
+  id: evidence_level
+  attributes:
+    label: What kind of evidence supports this?
+    options:
+    - A — primary source (standard catalogue, peer-reviewed paper, official vendor spec)
+    - B — credible secondary source (review, textbook, expert guide)
+    - C — partial sourcing / own professional experience
+    - D — hypothesis, not yet backed by sources
+    multiple: false
+  validations:
+    required: true
+- type: textarea
+  id: s_sources
+  attributes:
+    label: Evidence and sources
+    description: Links, DOIs or references backing the claims above.
+    placeholder: 'https://…
+
+      doi:…'
+  validations:
+    required: true
+- type: checkboxes
+  id: confirm
+  attributes:
+    label: Before you submit
+    options:
+    - label: I have searched the Atlas and this is not already there.
+      required: true
+    - label: I have not copied text from standards or other copyrighted sources.
+      required: true
+    - label: I agree that my contribution is published in the Atlas under the project's content licence.
+      required: true

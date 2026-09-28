@@ -1,0 +1,53 @@
+name: ✏️ Correct existing information
+description: Fix an error, add a source, or report an outdated entry.
+title: 'Correction: '
+labels:
+- correction
+body:
+- type: markdown
+  attributes:
+    value: Thanks for helping keep the Atlas accurate. A maintainer will review and apply the change.
+- type: input
+  id: note
+  attributes:
+    label: Which page?
+    description: Page name (and id if you know it).
+    placeholder: e.g. Tobii Pro Glasses 3 (TOOL-001)
+  validations:
+    required: true
+- type: dropdown
+  id: kind
+  attributes:
+    label: What kind of correction?
+    options:
+    - factual error
+    - outdated information (new version, discontinued, withdrawn)
+    - missing or wrong source
+    - broken link
+    - missing connection to another page
+    - other
+    multiple: false
+  validations:
+    required: true
+- type: textarea
+  id: s_what
+  attributes:
+    label: What is wrong?
+  validations:
+    required: true
+- type: textarea
+  id: s_fix
+  attributes:
+    label: What should it say instead?
+  validations:
+    required: true
+- type: textarea
+  id: s_sources
+  attributes:
+    label: Evidence and sources
+    description: Links, DOIs or references backing the claims above.
+    placeholder: 'https://…
+
+      doi:…'
+  validations:
+    required: false

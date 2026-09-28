@@ -1,0 +1,19 @@
+{
+  "name": "design-challenge-atlas",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Design Challenge Atlas — open knowledge base of design challenges, metrics, standards, methods, tools and tool gaps.",
+  "scripts": {
+    "validate": "node scripts/validate.mjs",
+    "overviews": "node scripts/generate-overviews.mjs",
+    "build": "node scripts/build-site.mjs",
+    "preview": "node scripts/build-site.mjs --serve",
+    "check": "node scripts/validate.mjs && node scripts/generate-overviews.mjs --check"
+  },
+  "engines": { "node": ">=22" },
+  "dependencies": {
+    "gray-matter": "^4.0.3",
+    "js-yaml": "^4.1.0"
+  }
+}

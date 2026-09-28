@@ -1,0 +1,82 @@
+# When a maintainer adds the label "accepted" to a contribution issue,
+# this turns the issue form into an Atlas note and opens a pull request.
+#
+# Setup (once): Settings → Actions → General → Workflow permissions →
+#   "Read and write permissions" + "Allow GitHub Actions to create and approve pull requests".
+# Optional: add a repository secret ATLAS_BOT_TOKEN (fine-grained PAT with contents + pull requests
+# write). Pull requests opened with the default token do not trigger the Validate workflow;
+# validation therefore also runs here, before the pull request is opened.
+name: Contribution issue → pull request
+
+on:
+  issues:
+    types: [labeled]
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+jobs:
+  create-note:
+    if: github.event.label.name == 'accepted' && contains(github.event.issue.labels.*.name, 'contribution')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+
+      - name: Convert issue to note
+        id: note
+        env:
+          ISSUE_BODY: ${{ github.event.issue.body }}
+          ISSUE_LABELS: ${{ toJSON(github.event.issue.labels.*.name) }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          ISSUE_AUTHOR: ${{ github.event.issue.user.login }}
+        run: |
+          file=$(node scripts/issue-to-note.mjs)
+          echo "file=$file" >> "$GITHUB_OUTPUT"
+
+      - name: Validate
+        run: node scripts/validate.mjs
+
+      - name: Open pull request
+        id: pr
+        uses: peter-evans/create-pull-request@v7
+        with:
+          token: ${{ secrets.ATLAS_BOT_TOKEN || github.token }}
+          branch: contribution/issue-${{ github.event.issue.number }}
+          commit-message: "Add ${{ steps.note.outputs.file }} (from #${{ github.event.issue.number }})"
+          title: "${{ github.event.issue.title }}"
+          labels: contribution
+          body: |
+            Generated from #${{ github.event.issue.number }} by @${{ github.event.issue.user.login }}.
+
+            **New note:** `${{ steps.note.outputs.file }}` — status `proposed`, origin `community`.
+
+            Maintainer checklist:
+            - [ ] Content is accurate and neutral (no marketing)
+            - [ ] Sources are adequate for the evidence level
+            - [ ] Items under "To link" are matched or created
+            - [ ] Nothing copied from standards
+
+            Closes #${{ github.event.issue.number }}
+
+      - name: Comment on issue
+        if: steps.pr.outputs.pull-request-url
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh issue comment ${{ github.event.issue.number }} --repo ${{ github.repository }} \
+            --body "Thanks! Your contribution has been turned into a note: ${{ steps.pr.outputs.pull-request-url }}"
+
+      - name: Report failure on issue
+        if: failure()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh issue comment ${{ github.event.issue.number }} --repo ${{ github.repository }} \
+            --body "The automatic conversion failed — a maintainer will create the note by hand. (See the workflow run for details.)"

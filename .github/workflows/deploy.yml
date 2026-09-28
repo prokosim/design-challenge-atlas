@@ -1,0 +1,65 @@
+# Builds the website with Quartz and publishes it to GitHub Pages on every push to main.
+# Also refreshes the generated Overview pages in the repository, so Obsidian users see current tables.
+name: Deploy website
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+
+      - name: Refresh generated overview pages
+        run: |
+          node scripts/generate-overviews.mjs
+          if [ -n "$(git status --porcelain content/Overviews)" ]; then
+            git config user.name "atlas-bot"
+            git config user.email "atlas-bot@users.noreply.github.com"
+            git add content/Overviews
+            git commit -m "Refresh generated overview pages [skip ci]"
+            git push
+          fi
+
+      - name: Cache Quartz
+        uses: actions/cache@v4
+        with:
+          path: .quartz
+          key: quartz-${{ hashFiles('atlas.config.json') }}
+
+      - name: Build site
+        env:
+          ATLAS_REPO_URL: https://github.com/${{ github.repository }}
+          ATLAS_BASE_URL: ${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}
+        run: node scripts/build-site.mjs
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

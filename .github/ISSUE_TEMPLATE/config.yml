@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: 📖 Browse the Atlas
+    url: https://OWNER.github.io/design-challenge-atlas/
+    about: Check whether your entry already exists before submitting.
+  - name: 🤝 Contribution guide
+    url: https://github.com/OWNER/design-challenge-atlas/blob/main/CONTRIBUTING.md
+    about: Rules for contributions (sources, no copying from standards, trust levels).
