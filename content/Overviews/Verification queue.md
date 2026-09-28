@@ -8,7 +8,7 @@ generated: true
 > What needs reviewing or re-verifying — the maintainers' to-do list.
 > This page is rebuilt automatically from note properties — do not edit it by hand. Change the underlying notes instead.
 
-✅ verified: 0 · ☑️ reviewed: 0 · 📝 proposed: 97 · ⛔ deprecated: 0
+✅ verified: 0 · ☑️ reviewed: 0 · 📝 proposed: 98 · ⛔ deprecated: 0
 
 See [[Trust levels]] for what each status and evidence level means.
 
@@ -84,6 +84,7 @@ See [[Trust levels]] for what each status and evidence level means.
 | [[Reach distance]] | metric | C | core | 2026-09-28 | — |
 | [[Real-time cognitive workload]] | metric | B | core | 2026-09-28 | — |
 | [[Real-time cognitive workload measurement in the field]] | gap | B | core | 2026-09-28 | — |
+| [[Rethinking.Logistics project]] | source | A | core | 2026-09-28 | Šimon Prokop |
 | [[Ronca et al 2025]] | source | A | core | 2026-09-28 | — |
 | [[RULA score]] | metric | A | core | 2026-09-28 | — |
 | [[Sauro errors in UX]] | source | B | core | 2026-09-28 | — |
