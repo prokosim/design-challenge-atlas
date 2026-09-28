@@ -19,7 +19,7 @@ generated: true
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | [[Daily vibration exposure A(8)]] | vibration | m/s² | [[Hand-arm vibration measurement]] | 1 | 🟢 covered | proposed | — |
 | [[Error recovery time]] | time | s | [[Video-based behaviour coding]], [[Usability testing]] | 1 | 🟠 known gap | proposed | [[Automated use-error detection and classification]] |
-| [[EUI - Energy Use Intensity]] | energy usage | kWh/m^2 | — | 0 | 🔴 no tool | — | — |
+| [[EUI - Energy Use Intensity]] | other | kWh/m^2 | — | 0 | 🔴 no tool | — | — |
 | [[Grip force]] | force | N | [[Grip pressure mapping]] | 1 | 🟠 known gap | proposed | [[Grip force measurement on real tool handles in the field]] |
 | [[NASA-TLX score]] | workload | score 0–100 | [[Workload questionnaire]] | 2 | 🟠 known gap | proposed | [[Real-time cognitive workload measurement in the field]] |
 | [[Reach distance]] | reach-space | mm | [[Digital human simulation]] | 2 | 🟢 covered | proposed | — |

@@ -14,9 +14,9 @@ generated: true
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | [[Biometrics electrogoniometers]] | Biometrics Ltd | measurement-hardware | [[Electrogoniometry]] | 2 | quote-based | semi-automatic | field, lab | 📝 proposed |
 | [[Emotiv EPOC X]] | Emotiv | measurement-hardware | [[Physiological workload measurement]] | 1 | — | automatic | lab, field | 📝 proposed |
-| [[Honeybee]] | info@ladybug.tools | environmental analysis, analysis-software | — | 0 | free | semi-automatic |  | 📝 proposed |
+| [[Honeybee]] | info@ladybug.tools | analysis-software | — | 0 | free | semi-automatic |  | 📝 proposed |
 | [[IPS IMMA]] | Industrial Path Solutions | simulation | [[Digital human simulation]] | 2 | quote-based | automatic | desktop | 📝 proposed |
-| [[Ladybug]] |  | environmental analysis, analysis-software | — | 0 | free | semi-automatic |  | 📝 proposed |
+| [[Ladybug]] |  | analysis-software | — | 0 | free | semi-automatic |  | 📝 proposed |
 | [[LimeSurvey]] | LimeSurvey GmbH | survey-platform | [[Standardized usability questionnaire]], [[Workload questionnaire]] | 2 | free | semi-automatic | remote, lab, field | 📝 proposed |
 | [[NASA TLX iOS app]] | NASA Ames Research Center | survey-platform | [[Workload questionnaire]] | 1 | free | semi-automatic | field, lab | 📝 proposed |
 | [[Noldus The Observer XT]] | Noldus Information Technology | analysis-software | [[Video-based behaviour coding]], [[Usability testing]] | 5 | $$ | manual | desktop, field | 📝 proposed |

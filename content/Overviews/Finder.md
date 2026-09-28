@@ -60,6 +60,7 @@ If you already know the kind of quantity, start here. Each metric page lists met
 | workload | [[Real-time cognitive workload]] | [[Physiological workload measurement]], [[Eye-tracking study]] | [[Emotiv EPOC X]], [[Tobii Pro Glasses 3]] | 🟠 known gap |
 | attention | [[Time to first fixation]] | [[Eye-tracking study]] | [[Tobii Pro Glasses 3]], [[Tobii Pro Lab]] | 🟢 covered |
 | satisfaction | [[SUS score]] | [[Standardized usability questionnaire]] | [[LimeSurvey]] | 🟢 covered |
+| other | [[EUI - Energy Use Intensity]] | — | — | 🔴 no tool |
 
 ## Step 3 — No adequate tool?
 
