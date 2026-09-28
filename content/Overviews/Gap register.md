@@ -36,4 +36,4 @@ These come straight from the structure of the Atlas. Each is either a **real gap
 - [[Low operator trust in automation]] — cannot be measured yet
 
 ---
-Know a gap that is not listed? [Report a tool gap](https://github.com/OWNER/design-challenge-atlas/issues/new?template=report-gap.yml).
+Know a gap that is not listed? [Report a tool gap](https://github.com/prokosim/design-challenge-atlas/issues/new?template=report-gap.yml).

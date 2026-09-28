@@ -63,4 +63,4 @@ If you already know the kind of quantity, start here. Each metric page lists met
 
 ## Step 3 — No adequate tool?
 
-If the path ends in 🔴 or 🟠, check the [[Gap register]]. If your case is not there, [report a tool gap](https://github.com/OWNER/design-challenge-atlas/issues/new?template=report-gap.yml) — gaps are one of the most valuable things you can contribute.
+If the path ends in 🔴 or 🟠, check the [[Gap register]]. If your case is not there, [report a tool gap](https://github.com/prokosim/design-challenge-atlas/issues/new?template=report-gap.yml) — gaps are one of the most valuable things you can contribute.
