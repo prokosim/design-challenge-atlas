@@ -21,6 +21,8 @@ sources: []
 
 Energy Use Intensity ([EUI](https://www.energystar.gov/buildings/benchmark/understand-metrics/what-eui)) is a straightforward yet powerful metric that measures how efficiently a building uses energy. Specifically, EUI is calculated by dividing the total energy consumed by a building in one year by its total floor area. The result - typically expressed in kilowatt-hours per square meter (kWh/m²) or thousand British thermal units per square foot (kBtu/ft²) - provides a standardised way to compare energy performance across different building types and sizes.
 
+TEST is this alive???
+
 ## Calculation
 
 The formula for calculating EUI is:
