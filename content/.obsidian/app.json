@@ -4,5 +4,7 @@
   "alwaysUpdateLinks": true,
   "showUnsupportedFiles": false,
   "userIgnoreFilters": [],
-  "propertiesInDocument": "visible"
+  "propertiesInDocument": "visible",
+  "newFileLocation": "current",
+  "attachmentFolderPath": "Attachments"
 }

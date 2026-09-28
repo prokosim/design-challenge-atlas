@@ -21,3 +21,5 @@ Rethinking.Logistics was funded by Rambol founden.
 6 partners...
 21+ students
 18 expert lectures
+
+![[Pasted image 20260928150554.png]]
