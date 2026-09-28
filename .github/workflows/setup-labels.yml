@@ -1,0 +1,30 @@
+# One-time helper: creates (or updates) the labels the Atlas contribution flow needs.
+# Run it from the Actions tab → "Set up labels" → "Run workflow". Safe to run again.
+name: Set up labels
+
+on:
+  workflow_dispatch:
+
+permissions:
+  issues: write
+
+jobs:
+  labels:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create labels
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+        run: |
+          create() { gh label create "$1" --repo "$REPO" --color "$2" --description "$3" --force; }
+          create "contribution"     "0e8a16" "Submitted through an Atlas issue form"
+          create "accepted"         "1d76db" "Maintainer approved: turn this issue into a note"
+          create "correction"       "d93f0b" "Correction to existing Atlas content"
+          create "type:challenge"   "c5def5" "Design challenge"
+          create "type:metric"      "c5def5" "Metric"
+          create "type:standard"    "c5def5" "Standard"
+          create "type:method"      "c5def5" "Method"
+          create "type:tool"        "c5def5" "Digital tool"
+          create "type:gap"         "f9d0c4" "Tool gap"
+          create "type:case-study"  "c5def5" "Case study"
